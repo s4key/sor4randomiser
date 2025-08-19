@@ -9,4 +9,5 @@ When the program is open, just click the randomise button. It's that easy.
 Future thoughts:
 
 Possibly graphical representation of the characters.
+
 Filters
