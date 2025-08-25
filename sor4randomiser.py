@@ -2,6 +2,8 @@ import json
 from random import choice
 from tkinter import *
 from functools import partial
+import os.path
+import urllib.request
 
 #Little script to randomise SoR4 survival runs
 #Picks a random character then picks random abilities.
@@ -10,9 +12,17 @@ from functools import partial
 class Randomiser:
 
     def __init__(self):
-        with open('sor4randomiser.json') as json_data:
-            self.chardict = json.load(json_data)
-            json_data.close()
+        if os.path.isfile('sor4randomiser.json'):
+            with open('sor4randomiser.json') as json_data:
+                self.chardict = json.load(json_data)
+                json_data.close()
+        else:
+            root = Tk()
+            root.title("Streets of Rage 4 Survival Character Picker")
+            root.geometry('600x400')
+            errorlabel = Label(root, text="json file missing")
+            errorlabel.pack()
+            root.mainloop()
 
     def picker(self, gamefilter):
         moves = []
