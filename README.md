@@ -8,8 +8,6 @@ The .json file has all the characters and their moves set in it.
 
 When the program is open, just click the randomise button. It's that easy.
 
-Future thoughts:
+I have build the application to a Windows binary using pyinstall. If you download the .exe file you will also need the .json file.
 
-Possibly graphical representation of the characters.
-
-Filters
+so4randomiser.zip has the binary and the .json file.
