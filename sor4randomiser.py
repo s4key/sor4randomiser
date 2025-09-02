@@ -15,9 +15,18 @@ class Randomiser:
             json_data.close()
         
         #This section is all the initalisation for the interface and the buttons/filters
+
+        #Main window
         self.root = Tk()
         self.root.title("Streets of Rage 4 Survival Randomiser")
-        self.root.geometry('600x400')
+
+        #Filter frame
+        self.filterframe = LabelFrame(self.root, text="Filters:")
+        self.filterframe.pack(fill="both")
+
+        #Character frame
+        self.charframe = LabelFrame(self.root, text="Character:")
+        self.charframe.pack(fill="both", expand="yes")
 
         #These are the variables for the filter check boxes. These need declared before the check boxes are created.
         self.sor1filter = IntVar()
@@ -25,38 +34,32 @@ class Randomiser:
         self.sor3filter = IntVar()
         self.sor4filter = IntVar()
 
-        self.filterlabel = Label(self.root, text="Filters:")
-        self.filterlabel.place(x=450, y=10)
-
-        self.sor1filterbox = Checkbutton(self.root, text="SoR 1", variable=self.sor1filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor1"))
+        self.sor1filterbox = Checkbutton(self.filterframe, text="SoR 1", variable=self.sor1filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor1"))
         self.sor1filterbox.select()
-        self.sor1filterbox.place(x=450, y=50)
+        self.sor1filterbox.pack(side = LEFT)
 
-        self.sor2filterbox = Checkbutton(self.root, text="SoR 2", variable=self.sor2filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor2"))
+        self.sor2filterbox = Checkbutton(self.filterframe, text="SoR 2", variable=self.sor2filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor2"))
         self.sor2filterbox.select()
-        self.sor2filterbox.place(x=450, y=80)
+        self.sor2filterbox.pack(side = LEFT)
 
-        self.sor3filterbox = Checkbutton(self.root, text="SoR 3", variable=self.sor3filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor3"))
+        self.sor3filterbox = Checkbutton(self.filterframe, text="SoR 3", variable=self.sor3filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor3"))
         self.sor3filterbox.select()
-        self.sor3filterbox.place(x=450, y=110)
+        self.sor3filterbox.pack(side = LEFT)
 
-        self.sor4filterbox = Checkbutton(self.root, text="SoR 4", variable=self.sor4filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor4"))
+        self.sor4filterbox = Checkbutton(self.filterframe, text="SoR 4", variable=self.sor4filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor4"))
         self.sor4filterbox.select()
-        self.sor4filterbox.place(x=450, y=140)
+        self.sor4filterbox.pack(side = LEFT)
 
-        self.chartitlelabel = Label(self.root, text="Character: ")
-        self.chartitlelabel.place(x=20, y=10)
-
-        self.charlabel = Label(self.root, text=f"")
-        self.charlabel.place(x=120, y=10)
+        self.charlabel = Label(self.charframe, text=f"", font="bold")
+        self.charlabel.pack()
 
         self.movelabelcontents = ""
-        self.movelabel = Label(self.root, text=self.movelabelcontents, justify=LEFT)
-        self.movelabel.place(x=20, y=50)
+        self.movelabel = Label(self.charframe, text=self.movelabelcontents, justify=LEFT)
+        self.movelabel.pack()
 
         self.btn = Button(self.root, text = "Randomise", fg="blue", command=self.clicked)
         self.btn.config(height=1, width=10)
-        self.btn.place(x=240, y=360)
+        self.btn.pack(fill="both")
         #end gui intiialisation
 
         self.gamefilter = ["SOR1", "SOR2", "SOR3", "SOR4"] # List for the filters. Used to select which games to select characters from,
