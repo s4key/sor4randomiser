@@ -28,9 +28,6 @@ class Randomiser:
         self.filterlabel = Label(self.root, text="Filters:")
         self.filterlabel.place(x=450, y=10)
 
-        self.filterlabel = Label(self.root, text="Filters:")
-        self.filterlabel.place(x=450, y=10)
-
         self.sor1filterbox = Checkbutton(self.root, text="SoR 1", variable=self.sor1filter, onvalue=1, offvalue=0, command=partial(self.chbox, "sor1"))
         self.sor1filterbox.select()
         self.sor1filterbox.place(x=450, y=50)
